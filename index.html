@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <title>Vota tu equipo</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Vota tu equipo</h1>
+        <button onclick="toggleTeamNameInputs()">Ingresar nombre</button>
+        <div id="teamNameInputs" class="hidden">
+            <input type="text" id="blueTeamNameInput" class="team-name-input" placeholder="Team azul">
+            <input type="text" id="redTeamNameInput" class="team-name-input" placeholder="Team rojo">
+            <button onclick="updateTeamNames()">Actualizar nombres de equipos</button>
+        </div>
+        <button onclick="toggleTimerInput()">Configurar cronómetro</button>
+        <div id="timerInput" class="hidden">
+            <input type="number" id="minutesInput" class="time-input" placeholder="Minutos">
+            <button onclick="startTimer()">Iniciar/reiniciar cronómetro</button>
+        </div>
+        <div class="team-container">
+            <div class="team blue">
+                <span class="percentage" id="bluePercentage">0.0%</span>
+                <h2 id="blueTeamName">Team azul</h2>
+                <video autoplay loop muted>
+                    <source src="multimedia/video/1.webm" type="video/webm">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="progress-container">
+                    <div class="progress-bar blue-bar" id="blueProgress" style="width: 0%;">
+                    </div>
+                </div>
+                <p class="vote-count" id="blueVotes">0 votos</p>
+                <div class="images-container">
+                    <img src="multimedia/img/1.png" alt="Imagen 1">
+                    <div class="image-text">1 voto</div>
+                </div>
+            </div>
+            <div class="team red">
+                <span class="percentage" id="redPercentage">0.0%</span>
+                <h2 id="redTeamName">Team rojo</h2>
+                <video autoplay loop muted>
+                    <source src="multimedia/video/2.webm" type="video/webm">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="progress-container">
+                    <div class="progress-bar red-bar" id="redProgress" style="width: 0%;">
+                    </div>
+                </div>
+                <p class="vote-count" id="redVotes">0 votos</p>
+                <div class="images-container">
+                    <img src="multimedia/img/2.png" alt="Imagen 2">
+                    <div class="image-text">1 voto</div>
+                </div>
+            </div>
+        </div>
+        <div id="timer">Tiempo restante: 00:00</div>
+        <p>Envía tu regalo para VOTAR 🔥🔥👑🔥🔥</p>
+        <p>No olvides darle TapTap y Compartir ❤️</p>
+    </div>
+    <script src="script/scritpt.js"></script>
+</body>
+</html>
