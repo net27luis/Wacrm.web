@@ -1,0 +1,476 @@
+ body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #e0e0e0;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Agrega esto a tu archivo CSS */
+.hero-gradient-text {
+  background: linear-gradient(90deg, #00ddeb, #ff00cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+    .navbar {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 1;
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    .glow-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 221, 235, 0.7);
+    }
+
+    .glow-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    .glow-button:hover::before {
+      left: 100%;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(0, 221, 235, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      }
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(30, 30, 30, 0.8);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card img {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+      box-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    /* Animación de flotación para la imagen Hero */
+    @keyframes floatHero {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float {
+      animation: floatHero 3s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.5);
+    }
+
+    /* Animación de entrada para tarjetas */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: #1e1e1e;
+      margin: 5% auto;
+      padding: 1.5rem;
+      max-width: 800px;
+      border-radius: 12px;
+      position: relative;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+    }
+
+    .modal-image {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-image:hover {
+      transform: scale(1.05);
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(0, 221, 235, 0.4);
+      border-color: #00ddeb;
+    }
+
+    /* Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 150;
+    }
+
+    .chatbot-toggle {
+      background: #00ddeb;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .chatbot-window {
+      display: none;
+      width: 320px;
+      height: 450px;
+      background: #161616;
+      border: 2px solid #00ddeb;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chatbot-window.active {
+      display: flex;
+    }
+
+    .chatbot-header {
+      background: #00ddeb;
+      color: #1a1a1a;
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #1e1e1e;
+    }
+
+    .chatbot-message {
+      margin: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+
+    .chatbot-message.bot {
+      background: #00ddeb;
+      color: #1a1a1a;
+      margin-left: auto;
+    }
+
+    .chatbot-message.user {
+      background: #ff00cc;
+      color: #e0e0e0;
+      margin-right: auto;
+    }
+
+    .chatbot-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .chatbot-option {
+      background: #2e2e2e;
+      color: #e0e0e0;
+      border: 1px solid #00ddeb;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .chatbot-option:hover {
+      background: #00ddeb;
+      color: #1a1a1a;
+      transform: scale(1.05);
+    }
+
+    .chatbot-input {
+      display: flex;
+      padding: 0.5rem;
+      background: #1e1e1e;
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #00ddeb;
+      border-radius: 8px;
+      background: #2e2e2e;
+      color: #e0e0e0;
+      outline: none;
+    }
+
+    .chatbot-input button {
+      background: #00ddeb;
+      color: #1a1a1a;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chatbot-input button:hover {
+      background: #00b7c3;
+    }
+
+    .error-message {
+      color: #ff00cc;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    /* Estilo para imágenes PNG cuadradas */
+    .program-image {
+      width: 300px;
+      height: 200px;
+      object-fit: contain;
+    }
+
+    .card-wacrmpro:hover {
+      box-shadow: 0 0 25px rgba(247, 243, 5, 0.7);
+    }
+
+    .card-wacrm:hover {
+      box-shadow: 0 0 25px rgba(255, 0, 204, 0.7);
+    }
+
+    .card-wasender:hover {
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
+    }
+
+    .card-botmaster:hover {
+      box-shadow: 0 0 25px rgba(123, 0, 255, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 1rem;
+      }
+      .modal-content {
+        padding: 1.5rem;
+        margin: 10% 1rem;
+      }
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      .navbar-menu.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .chatbot-window {
+        width: 90%;
+        height: 80vh;
+        bottom: 60px;
+        right: 5%;
+      }
+      .programs-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #e0e0e0;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
